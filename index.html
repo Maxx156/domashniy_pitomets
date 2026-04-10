@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Барсик | Мой пушистый друг</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #fef9f0 0%, #fff7e8 100%);
+      color: #2e241f;
+      scroll-behavior: smooth;
+      line-height: 1.5;
+    }
+
+    /* контейнер */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* шапка */
+    .header {
+      background: #ffffffdd;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #ffddb0;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #c4682b;
+    }
+    .logo i {
+      font-size: 2rem;
+      color: #f59e0b;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #5a3e2b;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      color: #e07c2c;
+    }
+    .pet-btn {
+      background: #ffedd5;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: 600;
+    }
+
+    /* hero */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 60px 0 40px;
+    }
+    .hero-text {
+      flex: 1;
+    }
+    .hero-text .badge {
+      background: #ffd9b5;
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #b45f2a;
+      margin-bottom: 20px;
+    }
+    .hero-text h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      color: #3b2a1f;
+    }
+    .hero-text p {
+      font-size: 1.1rem;
+      color: #5e4b38;
+      margin-bottom: 28px;
+      max-width: 500px;
+    }
+    .stats {
+      display: flex;
+      gap: 28px;
+      margin-top: 20px;
+    }
+    .stat-item {
+      text-align: left;
+    }
+    .stat-number {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #dd7a2c;
+    }
+    .hero-img {
+      flex: 1;
+      background: #fbe9cf;
+      border-radius: 48px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .hero-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .hero-img:hover img {
+      transform: scale(1.02);
+    }
+
+    /* секция общая */
+    section {
+      padding: 70px 0;
+      border-bottom: 1px solid #ffe1bc;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: #f7b05e;
+      border-radius: 4px;
+    }
+
+    /* карточки ухода */
+    .care-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .care-card {
+      background: white;
+      border-radius: 32px;
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+      transition: all 0.25s;
+      border: 1px solid #ffe2c1;
+    }
+    .care-card i {
+      font-size: 2.8rem;
+      color: #e68a2e;
+      margin-bottom: 20px;
+    }
+    .care-card h3 {
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+    .care-card p {
+      color: #6a4e35;
+    }
+    .care-card:hover {
+      transform: translateY(-6px);
+      border-color: #ffcd94;
+      box-shadow: 0 20px 28px -12px rgba(210, 120, 30, 0.15);
+    }
+
+    /* галерея */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+    }
+    .gallery-item {
+      border-radius: 28px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* факты + интерактив */
+    .facts-block {
+      background: #fff3e4;
+      border-radius: 44px;
+      padding: 40px 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .facts-list {
+      flex: 2;
+    }
+    .facts-list ul {
+      list-style: none;
+    }
+    .facts-list li {
+      margin-bottom: 18px;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .facts-list i {
+      color: #f59e0b;
+      width: 28px;
+      font-size: 1.3rem;
+    }
+    .pet-interact {
+      flex: 1;
+      text-align: center;
+      background: white;
+      padding: 28px 20px;
+      border-radius: 38px;
+      box-shadow: 0 8px 14px rgba(0,0,0,0.05);
+    }
+    .pet-interact h3 {
+      margin-bottom: 18px;
+      font-size: 1.7rem;
+    }
+    .pet-interact button {
+      background: #f1b26a;
+      border: none;
+      padding: 14px 32px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 60px;
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+      margin: 20px 0 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .pet-interact button:hover {
+      background: #dd882e;
+      transform: scale(1.02);
+    }
+    .pet-interact .counter {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #c4682b;
+      background: #ffefdc;
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 60px;
+    }
+    .heart-animation {
+      font-size: 1.8rem;
+      animation: bounce 0.4s ease;
+    }
+    @keyframes bounce {
+      0% { transform: scale(0.8); opacity: 0; }
+      80% { transform: scale(1.3); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* подвал */
+    .footer {
+      background: #2e241f;
+      color: #fce6cf;
+      padding: 40px 0;
+      text-align: center;
+      border-radius: 32px 32px 0 0;
+      margin-top: 20px;
+    }
+    .footer a {
+      color: #ffc285;
+      text-decoration: none;
+    }
+    .social-icons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      font-size: 1.4rem;
+    }
+
+    @media (max-width: 760px) {
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+      .nav {
+        flex-direction: column;
+      }
+      .section-title {
+        font-size: 1.7rem;
+      }
+      .facts-block {
+        flex-direction: column;
+      }
+      .container {
+        padding: 0 20px;
+      }
+      section {
+        padding: 50px 0;
+      }
+    }
+    button, .gallery-item {
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="nav">
+      <div class="logo">
+        <i class="fas fa-paw"></i>
+        <span>Барсик & Co</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#about">О питомце</a></li>
+        <li><a href="#care">Уход</a></li>
+        <li><a href="#gallery">Галерея</a></li>
+        <li><a href="#fun">Факты</a></li>
+        <li><a href="#" class="pet-btn"><i class="fas fa-heart"></i> Мой друг</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <!-- Hero / О питомце -->
+    <div class="hero" id="about">
+      <div class="hero-text">
+        <div class="badge"><i class="fas fa-cat"></i> Домашний любимец</div>
+        <h1>Барсик Рыжик<br>Твой пушистый компас</h1>
+        <p>Кот с характером джентльмена, обожает ласку, игры и долгие сны на солнце. Познакомься с настоящим членом семьи.</p>
+        <div class="stats">
+          <div class="stat-item"><span class="stat-number">3 года</span><br>возраст</div>
+          <div class="stat-item"><span class="stat-number">4.8 кг</span><br>здоровый вес</div>
+          <div class="stat-item"><span class="stat-number">🐟 🧶</span><br>любит: тунец и клубки</div>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&auto=format" alt="Рыжий кот Барсик">
+      </div>
+    </div>
+
+    <!-- Уход и питание -->
+    <section id="care">
+      <h2 class="section-title">✨ Забота и рацион</h2>
+      <div class="care-grid">
+        <div class="care-card">
+          <i class="fas fa-bowl-food"></i>
+          <h3>Питание</h3>
+          <p>Корм премиум-класса + натуральные кусочки индейки. 2-3 раза в день, всегда свежая вода.</p>
+        </div>
+        <div class="care-card">
+          <i class="fas fa-hand-peace"></i>
+          <h3>Ласки & внимание</h3>
+          <p>Минимум 20 минут активных поглаживаний и почесываний за ушком — залог счастья.</p>
+        </div>
+        <div class="care-card">
+          <i class="fas fa-puzzle-piece"></i>
+          <h3>Игрушки и активность</h3>
+          <p>Мышки, мячики, интерактивные головоломки. Барсик обожает охотиться за лазером.</p>
+        </div>
+        <div class="care-card">
+          <i class="fas fa-bed"></i>
+          <h3>Здоровый сон</h3>
+          <p>Уютный домик-лежанка и персональный гамак на подоконнике.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Галерея фотографий -->
+    <section id="gallery">
+      <h2 class="section-title">📸 Моменты счастья</h2>
+      <div class="gallery">
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&auto=format" alt="Кот спит"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?w=400&auto=format" alt="Кот играет"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=400&auto=format" alt="Кот смотрит"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=400&auto=format" alt="Кот на диване"></div>
+      </div>
+    </section>
+
+    <!-- Факты + интерактивная кнопка погладить -->
+    <section id="fun">
+      <div class="facts-block">
+        <div class="facts-list">
+          <h2 class="section-title" style="margin-bottom: 28px;">🧠 Интересные факты</h2>
+          <ul>
+            <li><i class="fas fa-crown"></i> Барсик умеет открывать ящики с лакомствами</li>
+            <li><i class="fas fa-music"></i> Любит джаз и спокойную классическую музыку</li>
+            <li><i class="fas fa-futbol"></i> Его рекорд — поймать 15 мышек-игрушек за 2 минуты</li>
+            <li><i class="fas fa-clock"></i> Спит до 16 часов в сутки, как истинный король</li>
+            <li><i class="fas fa-hand-holding-heart"></i> Приходит утешать, когда хозяин грустит</li>
+          </ul>
+        </div>
+        <div class="pet-interact" id="petZone">
+          <h3><i class="fas fa-cat"></i> Погладь Барсика</h3>
+          <div class="counter" id="petCounter">0</div>
+          <button id="petBtn"><i class="fas fa-hand-peace"></i> Почесать за ушком</button>
+          <p id="petMessage" style="font-size: 0.9rem; color:#b45f2a;">🐾 Нажми, чтобы подарить ласку</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p><i class="fas fa-heart" style="color: #f59e0b;"></i> Барсик — лучший друг семьи. Забота, любовь и немного шалостей.</p>
+    <p>© 2025 Мой пушистый питомец | Сделано с душой</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-telegram"></i></a>
+      <a href="#"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    // Счетчик поглаживаний
+    let count = localStorage.getItem('petCountBarsik') ? parseInt(localStorage.getItem('petCountBarsik')) : 0;
+    const counterEl = document.getElementById('petCounter');
+    const petBtn = document.getElementById('petBtn');
+    const messageSpan = document.getElementById('petMessage');
+
+    function updateCounterUI() {
+      counterEl.innerText = count;
+      localStorage.setItem('petCountBarsik', count);
+    }
+
+    // функция анимации + случайные фразы
+    function addPetAnimation() {
+      // визуальный фидбек на кнопке
+      const btn = petBtn;
+      btn.style.transform = 'scale(0.96)';
+      setTimeout(() => { btn.style.transform = ''; }, 120);
+      
+      // сердечко-эффект
+      const zone = document.getElementById('petZone');
+      const heart = document.createElement('i');
+      heart.className = 'fas fa-heart heart-animation';
+      heart.style.position = 'absolute';
+      heart.style.fontSize = '2rem';
+      heart.style.color = '#f97316';
+      heart.style.pointerEvents = 'none';
+      heart.style.left = '50%';
+      heart.style.top = '30%';
+      heart.style.transform = 'translate(-50%, -50%)';
+      heart.style.zIndex = '10';
+      zone.style.position = 'relative';
+      zone.appendChild(heart);
+      setTimeout(() => heart.remove(), 500);
+      
+      // сообщение
+      const messages = [
+        'Муррр... спасибо! 😻', 'Барсик довольно жмурится', 'Ласка принята! 🐾', 
+        'Он мурлычет как трактор', 'Барсик подставляет ушко', '✨ Счастье +1 ✨'
+      ];
+      const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+      messageSpan.innerHTML = `🐈 ${randomMsg}`;
+      setTimeout(() => {
+        if (messageSpan) messageSpan.innerHTML = '🐾 Нажми, чтобы подарить ласку';
+      }, 1800);
+    }
+
+    // инициализация
+    updateCounterUI();
+
+    petBtn.addEventListener('click', () => {
+      count++;
+      updateCounterUI();
+      addPetAnimation();
+    });
+
+    // также добавим эффект для фото галереи (легкий алерт или лайк)
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach((item, idx) => {
+      item.addEventListener('click', () => {
+        // просто всплывающее уведомление без навязчивости
+        const toast = document.createElement('div');
+        toast.innerText = '📸 Барсик говорит: "Отличное фото!"';
+        toast.style.position = 'fixed';
+        toast.style.bottom = '20px';
+        toast.style.left = '50%';
+        toast.style.transform = 'translateX(-50%)';
+        toast.style.backgroundColor = '#2e241fe6';
+        toast.style.color = '#ffddb0';
+        toast.style.padding = '10px 24px';
+        toast.style.borderRadius = '60px';
+        toast.style.fontWeight = '500';
+        toast.style.zIndex = '999';
+        toast.style.backdropFilter = 'blur(8px)';
+        toast.style.fontSize = '0.9rem';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 1500);
+      });
+    });
+    
+    // плавная навигация
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
